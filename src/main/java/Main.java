@@ -22,7 +22,7 @@ public class Main {
                 while (!scanner.hasNextInt()){
                     System.out.println("Неправильная скорость");
                     System.out.println("Введите скорость машины №" + (i + 1));
-                    scanner=new Scanner(System.in);
+                    scanner.next();
                 }
 
                 currentCar.speed = scanner.nextInt();
@@ -40,6 +40,7 @@ public class Main {
         }
 
         System.out.println("Самая быстрая машина: " + race.currentLider);
+        scanner.close();
 
     }
 }
