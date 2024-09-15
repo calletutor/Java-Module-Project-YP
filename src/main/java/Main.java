@@ -16,17 +16,27 @@ public class Main {
             System.out.println("Введите название машины №" + (i + 1));
             currentCar.name = scanner.next();
             System.out.println("Введите скорость машины №" + (i + 1));
-            currentCar.speed = scanner.nextInt();
 
-            while (currentCar.speed <= minSpeed || currentCar.speed > maxSpeed){
+            while (currentCar.speed == 0){
 
-                System.out.println("Неправильная скорость");
-                System.out.println("Введите скорость машины №" + (i + 1));
+                while (!scanner.hasNextInt()){
+                    System.out.println("Неправильная скорость");
+                    System.out.println("Введите скорость машины №" + (i + 1));
+                    scanner=new Scanner(System.in);
+                }
+
                 currentCar.speed = scanner.nextInt();
+
+                if (currentCar.speed <= minSpeed || currentCar.speed > maxSpeed){
+                    System.out.println("Неправильная скорость");
+                    System.out.println("Введите скорость машины №" + (i + 1));
+                    currentCar.speed = 0;
+                }
 
             }
 
             race.whoIsTheLeader(currentCar);
+            currentCar.speed = 0;
         }
 
         System.out.println("Самая быстрая машина: " + race.currentLider);
